@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: grey;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #container {
+            
+            width: 480px;
+            height:480px;
+            margin: 50px auto;
+            font-size: 0;
+            /* box-shadow: 5px 5px 5px 5px; */
+        }
+        button {
+            margin: 30px auto 10px;
+            padding: 25px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <button id="clear">Reset Grid</button>
+    <div id="container"></div>
+
+    <script>
+var squareGrid;
+
+        var dimensioneGriglia = 16;
+        var buttonSelection = document.querySelector('#clear');
+        
+        buttonSelection.addEventListener('click', () => {
+           dimensioneGriglia = prompt('Scegli la dimensione della griglia tra 2 e 64', 16);
+           document.querySelector('#container').innerHTML = "";
+           squareGrid.forEach(element => {
+           element.style.backgroundColor = 'white';
+           });
+           
+           var gridDimension = dimensioneGriglia;
+           var widthAndHeight = 480 / gridDimension;
+           widthAndHeight = widthAndHeight;
+           console.log(widthAndHeight);
+        for (var i = 0; i < gridDimension*gridDimension; i++) {
+            var divElement = document.createElement('div');
+            divElement.setAttribute('class','squareGrid');
+                    
+            divElement.setAttribute('style','display: inline-block; border: none; margin: 0; padding: 0; border-collapse: collapse; background-color: white');
+            divElement.style.width = widthAndHeight+'px';
+            divElement.style.height = widthAndHeight+'px';
+            document.querySelector('#container').appendChild(divElement);            
+        }
+        
+        
+         squareGrid = document.querySelectorAll('.squareGrid');
+         
+         squareGrid.forEach(element => {
+            element.addEventListener('mouseover', () => {
+                console.log(getNewColor());
+                element.style.backgroundColor = getNewColor();
+            })
+        });
+
+
+
+        });
+        
+
+
+            // 480 / dimensioneGriglia =  altezza e larghezza dei div
+         function getNewColor(){
+         var symbols,color;
+         symbols = "0123456789ABCDEF";
+         color = "#";
+         for(var i =0;i<6;i++){
+           color = color + symbols[Math.floor(Math.random() * 16)];
+         }
+         return color;
+        }
+
+        var gridDimension = dimensioneGriglia;
+        var widthAndHeight = 480 / gridDimension;
+       widthAndHeight = widthAndHeight;
+        console.log(widthAndHeight);
+        for (var i = 0; i < gridDimension*gridDimension; i++) {
+            var divElement = document.createElement('div');
+            divElement.setAttribute('class','squareGrid');
+                    
+            divElement.setAttribute('style','display: inline-block; border: none; margin: 0; padding: 0; border-collapse: collapse; background-color: white');
+            divElement.style.width = widthAndHeight+'px';
+            divElement.style.height = widthAndHeight+'px';
+            document.querySelector('#container').appendChild(divElement);            
+        }
+        
+        
+         squareGrid = document.querySelectorAll('.squareGrid');
+         
+         squareGrid.forEach(element => {
+            element.addEventListener('mouseover', () => {
+                console.log(getNewColor());
+                element.style.backgroundColor = getNewColor();
+            })
+        });
+
+
+         
+
+        
+    </script>
+    
+</body>
+</html>
